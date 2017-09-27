@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Entry } from './entry.model';
-//import { ENTRIES } from './mock-entries';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @Injectable()
 export class EntryService {
   entries: FirebaseListObservable<any[]>;
+
 
   constructor(private database: AngularFireDatabase) {
   this.entries = database.list('entries');
@@ -15,16 +15,17 @@ export class EntryService {
     return this.entries;
   }
 
-  getEntryById(entryId: number){
-  // for (var i = 0; i <= ENTRIES.length - 1; i++) {
-  //   if (ENTRIES[i].id === entryId) {
-  //     return ENTRIES[i];
-  //   }
-  // }
+  getEntryById(entryId: string){
+    return this.database.object('entries/' + entryId);
 }
 
 addEntry(newEntry: Entry) {
   this.entries.push(newEntry);
+}
+
+updateEntry(localUpdatedEntry){
+  var entryInFirebase = this.getEntryById(localUpdatedEntry.$key);
+  entryInFirebase.update({title: localUpdatedEntry.title, author: localUpdatedEntry.author, description: localUpdatedEntry.description, goal: localUpdatedEntry.goal});
 }
 
 }

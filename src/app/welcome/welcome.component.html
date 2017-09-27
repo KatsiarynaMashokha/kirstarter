@@ -8,7 +8,11 @@
         <div class="panel-body">
     <h3 (click)="goToDetailPage(entry)"><em><b>{{entry.title}}</b></em>
       <br><small> by {{entry.author}}</small></h3>
-      <h3>{{entry.$key}}</h3>
+      <div *ngIf="currentRoute === '/admin'">
+      {{entry.description}}
+      <hr>
+      <app-edit-entry [selectedEntry]="entry"></app-edit-entry>
+    </div>
   </div>
 </div>
   </div>

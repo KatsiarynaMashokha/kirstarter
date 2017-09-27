@@ -1,0 +1,17 @@
+<h4>Edit Album</h4>
+
+<label>New Entry Title:</label>
+<input [(ngModel)]="selectedEntry.title">
+<br>
+
+<label>New Entry Author:</label>
+<input [(ngModel)]="selectedEntry.author">
+<br>
+
+<label>New Entry Description:</label>
+<input [(ngModel)]="selectedEntry.description">
+
+<label>New Entry Goal:</label>
+<input [(ngModel)]="selectedEntry.goal">
+
+<button (click)="beginUpdatingEntry(selectedEntry)">Update</button>

@@ -13,9 +13,11 @@ import { FirebaseListObservable } from 'angularfire2/database';
 export class WelcomeComponent implements OnInit {
   constructor(private router: Router, private entryService: EntryService){}
   entries: FirebaseListObservable<any[]>;
+  currentRoute: string = this.router.url;
 
   goToDetailPage(clickedEntry) {
     this.router.navigate(['entries', clickedEntry.$key]);
+    console.log(clickedEntry.title);
   };
 
   ngOnInit() {

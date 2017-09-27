@@ -18,7 +18,6 @@ export class AdminComponent implements OnInit {
   submitForm(title: string, author: string, description: string, goal: number) {
     var newEntry: Entry = new Entry(title, author, description, goal);
     this.entryService.addEntry(newEntry);
-    console.log('new entry added');
   }
 
 }
