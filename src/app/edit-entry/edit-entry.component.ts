@@ -18,4 +18,15 @@ export class EditEntryComponent implements OnInit {
   beginUpdatingEntry(entryToUpdate){
     this.entryService.updateEntry(entryToUpdate);
   }
+
+  beginDeletingEntry(entryToDelete) {
+    if(confirm("Are you sure you want to delete an entry from the list?")) {
+      this.deleteEntry(entryToDelete);
+    }
+  }
+
+  deleteEntry(localEntryToDelete) {
+    let entryInFirebase = this.entryService.getEntryById(localEntryToDelete.$key);
+    entryInFirebase.remove();
+  }
 }
