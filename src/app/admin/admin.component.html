@@ -1,0 +1,29 @@
+<h3>Add a new campaign to our list</h3>
+<div>
+  <div>
+    <label>Title:</label>
+    <br>
+    <input #newTitle>
+  </div>
+
+  <div>
+    <label>Author:</label>
+    <br>
+    <input #newAuthor>
+  </div>
+
+  <div>
+    <label>Description:</label>
+    <br>
+    <textarea #newDescription></textarea>
+  </div>
+
+  <div>
+    <label>Goal:</label>
+    <br>
+    <textarea #newGoal></textarea>
+  </div>
+  <button (click)="submitForm(newTitle.value, newAuthor.value, newDescription.value, newGoal.value); newTitle.value = ''; newDescription.value = ''; newGoal.value = ''; newAuthor.value = ''">Add</button>
+
+
+</div>
